@@ -1,0 +1,39 @@
+order:
+  - preproc
+  - cloudmask
+  # aşağıdakiler daha sonra eklenecek
+  # - bestpixel
+  # - colorbalance
+  # - cutline
+  # - blend
+
+preproc:
+  inputs:
+    - "C:/Tubitak/veri_serti/S2A_MSIL2A_20240814T085601_N0511_R007_T35TNF_20240814T133149.SAFE"
+    
+  target_crs: EPSG:32635
+  pixel_size: 10
+  resampling: cubic
+  out_dir: "C:/Tubitak/veri_serti/ortho"
+
+cloudmask:
+  inputs:
+    - "C:/Tubitak/veri_serti/S2A_MSIL2A_20240814T085601_N0511_R007_T35TNF_20240814T133149.SAFE"
+
+# Henüz implement edilmediği için yorum satırı yapılmış durumda
+# bestpixel:
+#   quality_formula: "1 - cloud - 0.3*haze - 0.1*abs(ndvi)"
+#   mem_chunks: 2048
+
+# colorbalance:
+#   sample_per_edge: 10000
+#   solver: lstsq
+
+# cutline:
+#   blur_sigma: 2
+#   blend_width: 20
+
+# blend:
+#   method: pyramid
+#   levels: 4
+#   out_mosaic: "D:/S2/mosaic/marmara_2024_aug_sep.tif"

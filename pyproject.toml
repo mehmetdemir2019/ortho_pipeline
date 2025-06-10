@@ -1,0 +1,9 @@
+[project]
+name = "ortho_pipeline"
+version = "0.1.0"
+description = "Modüler ortomozai̇k iş akışı"
+requires-python = ">=3.11"
+
+[project.entry-points."ortho_pipeline.stages"]
+preproc = "ortho_pipeline.stages.preproc:Preproc"
+cloudmask = "ortho_pipeline.stages.cloudmask:CloudMask"
