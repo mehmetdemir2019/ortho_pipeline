@@ -1,0 +1,3 @@
+[ortho_pipeline.stages]
+cloudmask = ortho_pipeline.stages.cloudmask:CloudMask
+preproc = ortho_pipeline.stages.preproc:Preproc
