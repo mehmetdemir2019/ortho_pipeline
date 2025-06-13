@@ -1,3 +1,4 @@
+README.md
 pyproject.toml
 ortho_pipeline/__init__.py
 ortho_pipeline/base.py
@@ -8,6 +9,12 @@ ortho_pipeline.egg-info/dependency_links.txt
 ortho_pipeline.egg-info/entry_points.txt
 ortho_pipeline.egg-info/top_level.txt
 ortho_pipeline/stages/__init__.py
+ortho_pipeline/stages/blend.py
 ortho_pipeline/stages/cloudmask.py
+ortho_pipeline/stages/cogify.py
+ortho_pipeline/stages/colorbalance.py
+ortho_pipeline/stages/cutline.py
+ortho_pipeline/stages/mosaic.py
 ortho_pipeline/stages/preproc.py
+ortho_pipeline/stages/scale8bit.py
 ortho_pipeline/utils/raster.py

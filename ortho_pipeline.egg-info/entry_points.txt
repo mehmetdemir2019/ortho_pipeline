@@ -1,3 +1,9 @@
 [ortho_pipeline.stages]
+blend = ortho_pipeline.stages.blend:Blend
 cloudmask = ortho_pipeline.stages.cloudmask:CloudMask
+cogify = ortho_pipeline.stages.cogify:Cogify
+colorbalance = ortho_pipeline.stages.colorbalance:ColorBalance
+cutline = ortho_pipeline.stages.cutline:Cutline
+mosaic = ortho_pipeline.stages.mosaic:Mosaic
 preproc = ortho_pipeline.stages.preproc:Preproc
+scale8bit = ortho_pipeline.stages.scale8bit:Scale8bit

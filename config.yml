@@ -1,16 +1,19 @@
 order:
   - preproc
   - cloudmask
-  # aşağıdakiler daha sonra eklenecek
-  # - bestpixel
-  # - colorbalance
-  # - cutline
-  # - blend
+  - colorbalance      # bestpixel hazırsa ekleyebilirsin
+  - cutline           # ← yeni
+  #- blend             # ← yeni
+  - mosaic
+  #- cogify
+  - scale8bit
 
 preproc:
   inputs:
     - "C:/Tubitak/veri_serti/S2A_MSIL2A_20240814T085601_N0511_R007_T35TNF_20240814T133149.SAFE"
-    
+    - "C:/Tubitak/veri_serti/S2A_MSIL2A_20240814T085601_N0511_R007_T35TNG_20240814T133149.SAFE"
+    - "C:/Tubitak/veri_serti/S2A_MSIL2A_20240814T085601_N0511_R007_T35TPF_20240814T133149.SAFE"
+    - "C:/Tubitak/veri_serti/S2A_MSIL2A_20240814T085601_N0511_R007_T35TPG_20240814T133149.SAFE"
   target_crs: EPSG:32635
   pixel_size: 10
   resampling: cubic
@@ -19,7 +22,37 @@ preproc:
 cloudmask:
   inputs:
     - "C:/Tubitak/veri_serti/S2A_MSIL2A_20240814T085601_N0511_R007_T35TNF_20240814T133149.SAFE"
+    - "C:/Tubitak/veri_serti/S2A_MSIL2A_20240814T085601_N0511_R007_T35TNG_20240814T133149.SAFE"
+    - "C:/Tubitak/veri_serti/S2A_MSIL2A_20240814T085601_N0511_R007_T35TPF_20240814T133149.SAFE"
+    - "C:/Tubitak/veri_serti/S2A_MSIL2A_20240814T085601_N0511_R007_T35TPG_20240814T133149.SAFE"
 
+mosaic:
+  out_path: "C:/Tubitak/veri_serti/mosaic/marmara_mosaic.tif"
+
+colorbalance:
+  sample_per_edge: 10000
+  solver: "lstsq"
+  
+cutline:
+  feather: 15         # isteğe bağlı parametre (px)
+
+blend:
+  feather: 25         # blend genişliği (px)
+
+cogify:
+  input_key: "blend"  # blend çıktı anahtarı
+  out_suffix: "_cog.tif"
+  blocksize: 512
+  compress: DEFLATE
+
+scale8bit:
+  input_key: "mosaic"
+  min_clip: 500
+  max_clip: 4500
+  out_suffix: "_8bit.tif"
+
+
+  
 # Henüz implement edilmediği için yorum satırı yapılmış durumda
 # bestpixel:
 #   quality_formula: "1 - cloud - 0.3*haze - 0.1*abs(ndvi)"
